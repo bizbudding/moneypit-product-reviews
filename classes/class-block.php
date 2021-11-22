@@ -122,7 +122,7 @@ class MP_Product_Reviews_Block {
 
 					echo '<p class="mp-product-links">';
 						if ( $product['link'] ) {
-							printf( '<a class="mp-product-button button button-secondary" href="%s" target="__blank" rel="noopener noreferrer">%s</a>', $product['link'], $product['button_text'] );
+							printf( '<a class="mp-product-button button button-secondary button-small" href="%s" target="__blank" rel="noopener noreferrer">%s</a>', $product['link'], $product['button_text'] );
 						}
 						printf( '<a class="mp-product-review-link" href="#mp-review-%s">%s</a>', $count, __( 'Read Our Review', 'moneypit-product-reviews' ) );
 					echo '</p>';
