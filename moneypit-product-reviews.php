@@ -99,9 +99,9 @@ final class MP_Product_Reviews_Plugin {
 		}
 
 		// Plugin Includes Path.
-		if ( ! defined( 'MP_PRODUCT_REVIEWS_INCLUDES_DIR' ) ) {
-			define( 'MP_PRODUCT_REVIEWS_INCLUDES_DIR', MP_PRODUCT_REVIEWS_PLUGIN_DIR . 'includes/' );
-		}
+		// if ( ! defined( 'MP_PRODUCT_REVIEWS_INCLUDES_DIR' ) ) {
+		// 	define( 'MP_PRODUCT_REVIEWS_INCLUDES_DIR', MP_PRODUCT_REVIEWS_PLUGIN_DIR . 'includes/' );
+		// }
 
 		// Plugin Classes Path.
 		if ( ! defined( 'MP_PRODUCT_REVIEWS_CLASSES_DIR' ) ) {
@@ -135,7 +135,7 @@ final class MP_Product_Reviews_Plugin {
 		// Include vendor libraries.
 		require_once __DIR__ . '/vendor/autoload.php';
 		// Includes.
-		foreach ( glob( MP_PRODUCT_REVIEWS_INCLUDES_DIR . '*.php' ) as $file ) { include $file; }
+		// foreach ( glob( MP_PRODUCT_REVIEWS_INCLUDES_DIR . '*.php' ) as $file ) { include $file; }
 		// Classes.
 		foreach ( glob( MP_PRODUCT_REVIEWS_CLASSES_DIR . '*.php' ) as $file ) { include $file; }
 		// Instantiate.
