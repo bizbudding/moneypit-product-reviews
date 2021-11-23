@@ -50,8 +50,15 @@ class MP_Product_Reviews_Block {
 				'icon'            => 'yes-alt',
 				'mode'            => 'edit',
 				'enqueue_assets'  => function() {
-					$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-					wp_enqueue_style( 'moneypit-product-reviews', MP_PRODUCT_REVIEWS_PLUGIN_URL . "assets/css/product-reviews{$suffix}.css" );
+					$suffix  = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+					$version = MP_PRODUCT_REVIEWS_VERSION;
+					$file    = MP_PRODUCT_REVIEWS_PLUGIN_DIR . "assets/css/product-reviews{$suffix}.css";
+
+					if ( file_exists( $file ) ) {
+						$version .= '.' . date( 'njYHi', filemtime( $file ) );
+					}
+
+					wp_enqueue_style( 'moneypit-product-reviews', MP_PRODUCT_REVIEWS_PLUGIN_URL . "assets/css/product-reviews{$suffix}.css", [], $version );
 				},
 				'supports'        => [
 					'align' => [],
