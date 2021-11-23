@@ -108,7 +108,7 @@ class MP_Product_Reviews_Block {
 							}
 
 							if ( $product['pros'] ) {
-								echo $this->get_list( $product['pros'], 'mp-pros' );
+								echo $this->get_list( $product['pros'], 'mp-pros', 3 );
 							}
 
 						echo '</div>';
@@ -263,13 +263,15 @@ class MP_Product_Reviews_Block {
 	 *
 	 * @param string $content The content from textarea field.
 	 * @param string $class   The html class for the list.
+	 * @param int    $limit   How many items to limit the list to.
 	 *
 	 * @return string
 	 */
-	function get_list( $content, $class ) {
+	function get_list( $content, $class, $limit = 0 ) {
 		$html  = '';
 		$array = explode( "\r\n", $content );
 		$array = array_values( array_filter( $array ) );
+		$array = $limit ? array_slice( $array , 0, absint( $limit ) ) : $array;
 
 		if ( $array ) {
 			$html .= sprintf( '<ul class="mp-list %s">', sanitize_html_class( $class ) );
