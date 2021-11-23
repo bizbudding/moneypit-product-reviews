@@ -104,7 +104,7 @@ class MP_Product_Reviews_Block {
 							}
 
 							if ( $product['link'] ) {
-								printf( '<p><a class="mp-product-reviews-link" href="%s">%s</a></p>', $product['link'], $product['link_text'] );
+								printf( '<p class="mp-product-reviews-link"><a href="%s">%s</a></p>', $product['link'], $product['link_text'] );
 							}
 
 							if ( $product['pros'] ) {
@@ -124,8 +124,9 @@ class MP_Product_Reviews_Block {
 						if ( $product['link'] ) {
 							printf( '<a class="mp-product-button button button-secondary button-small" href="%s" target="__blank" rel="noopener noreferrer">%s</a>', $product['link'], $product['button_text'] );
 						}
-						printf( '<a class="mp-product-review-link" href="#mp-review-%s">%s</a>', $count, __( 'Read Our Review', 'moneypit-product-reviews' ) );
 					echo '</p>';
+
+					printf( '<p class="mp-product-review-link"><a href="#mp-review-%s">%s</a></p>', $count, __( 'Read Our Review', 'moneypit-product-reviews' ) );
 
 				echo '</div>';
 
