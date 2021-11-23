@@ -62,8 +62,7 @@
 
 .mp-reviews-link,
 .mp-product-reviews-link a {
-	display: flex;
-	align-items: center;
+	display: block;
 	font-size: var(--font-size-sm);
 	line-height: 1;
 }
@@ -88,7 +87,6 @@
 }
 
 .mp-product-price {
-	place-self: center;
 	margin: 0;
 	font-weight: var(--heading-font-weight);
 	font-family: var(--heading-font-family);
@@ -98,10 +96,9 @@
 	text-transform: var(--heading-text-transform, none);
 }
 
-.mp-product-links {
-	place-self: center;
+.mp-product-links,
+.mp-product-button {
 	margin: 0;
-	text-align: center;
 }
 
 .mp-product-review-link {
@@ -122,10 +119,6 @@
 }
 
 .mp-review-header {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	place-items: center;
-	gap: var(--spacing-lg);
 	margin-bottom: var(--spacing-xl);
 	padding: var(--spacing-xl);
 	background: var(--color-white);
@@ -139,9 +132,6 @@
 
 .mp-lists {
 	--mp-list-item-background: var(--color-primary);
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: var(--spacing-lg);
 	margin-bottom: var(--spacing-xl);
 	font-size: var(--font-size-md);
 }
@@ -153,4 +143,20 @@
 
 .mp-review-more {
 	padding-left: 0;
+}
+
+@media only screen and (min-width: 400px) {
+
+	.mp-review-header {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		place-items: center;
+		gap: var(--spacing-lg);
+	}
+
+	.mp-lists {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--spacing-lg);
+	}
 }
