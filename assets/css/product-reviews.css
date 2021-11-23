@@ -101,6 +101,7 @@
 	gap: var(--spacing-lg);
 	margin-bottom: var(--spacing-xl);
 	padding: var(--spacing-xl);
+	background: var(--color-white);
 	border-radius: var(--radius);
 	box-shadow: var(--shadow);
 }
