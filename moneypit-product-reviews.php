@@ -4,7 +4,7 @@
  * Plugin Name:     Money Pit Product Reviews
  * Plugin URI:      https://moneypit.com
  * Description:     Create rich product review lists.
- * Version:         0.2.1
+ * Version:         0.2.2
  *
  * Author:          BizBudding, Mike Hemberger
  * Author URI:      https://bizbudding.com
@@ -90,7 +90,7 @@ final class MP_Product_Reviews_Plugin {
 
 		// Plugin version.
 		if ( ! defined( 'MP_PRODUCT_REVIEWS_VERSION' ) ) {
-			define( 'MP_PRODUCT_REVIEWS_VERSION', '0.2.1' );
+			define( 'MP_PRODUCT_REVIEWS_VERSION', '0.2.2' );
 		}
 
 		// Plugin Folder Path.

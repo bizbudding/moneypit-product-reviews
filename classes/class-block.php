@@ -122,7 +122,7 @@ class MP_Product_Reviews_Block {
 
 					echo '<p class="mp-product-links">';
 						if ( $product['link'] ) {
-							printf( '<a class="mp-product-button button button-secondary button-small" href="%s" target="__blank" rel="noopener noreferrer">%s</a>', $product['link'], $product['button_text'] );
+							printf( '<a class="mp-product-button button" href="%s" target="__blank" rel="noopener noreferrer">%s</a>', $product['link'], $product['button_text'] );
 						}
 					echo '</p>';
 
@@ -171,7 +171,7 @@ class MP_Product_Reviews_Block {
 
 							if ( $product['link'] ) {
 								printf( '<p><a class="mp-reviews-link" href="%s">%s</a></p>', $product['link'], $product['link_text'] );
-								printf( '<p><a class="mp-review-button button button-secondary" href="%s" target="__blank" rel="noopener noreferrer">%s</a></p>', $product['link'], $product['button_text'] );
+								printf( '<p><a class="mp-review-button button" href="%s" target="__blank" rel="noopener noreferrer">%s</a></p>', $product['link'], $product['button_text'] );
 							}
 
 						echo '</div>';
