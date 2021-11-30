@@ -97,14 +97,14 @@ class MP_Product_Reviews_Block {
 
 				printf( '<div class="mp-product%s">', '' );
 
-					if ( $product['image'] ) {
-						echo '<div class="mp-product-image">';
+					echo '<div class="mp-product-image">';
+						if ( $product['image'] ) {
 							echo wp_get_attachment_image( $product['image'], 'thumbnail' );
-						echo '</div>';
-					}
+						}
+					echo '</div>';
 
-					if ( $product['title'] || $product['link'] || $product['pros'] ) {
-						echo '<div class="mp-product-content">';
+
+					echo '<div class="mp-product-content">';
 
 							if ( $product['title'] ) {
 								printf( '<h2 class="mp-product-title">%s</h2>', $product['title'] );
@@ -115,25 +115,27 @@ class MP_Product_Reviews_Block {
 							}
 
 							if ( $product['pros'] ) {
-								echo $this->get_list( $product['pros'], 'mp-pros', 3 );
+								echo $this->get_list( $product['pros'], 'mp-product-pros mp-pros', 3 );
 							}
 
-						echo '</div>';
-					}
+					echo '</div>';
 
-					if ( $product['price'] ) {
-						echo '<p class="mp-product-price is-style-heading">';
-							printf( '$%s', $product['price'] );
-						echo '</p>';
-					}
+					echo '<div class="mp-product-details">';
 
-					echo '<p class="mp-product-links">';
+						if ( $product['price'] ) {
+							echo '<p class="mp-product-price is-style-heading">';
+								printf( '$%s', $product['price'] );
+							echo '</p>';
+						}
+
 						if ( $product['link'] ) {
 							printf( '<a class="mp-product-button button" href="%s" target="__blank" rel="noopener noreferrer">%s</a>', $product['link'], $product['button_text'] );
+							// printf( '<a class="mp-product-link" href="%s" target="__blank" rel="noopener noreferrer">%s</a>', $product['link'], $product['button_text'] );
 						}
-					echo '</p>';
 
-					printf( '<p class="mp-product-review-link"><a href="#mp-review-%s">%s</a></p>', $count, __( 'Read Our Review', 'moneypit-product-reviews' ) );
+						printf( '<a href="#mp-review-%s" class="mp-product-review-link">%s</a>', $count, __( 'Read Our Review', 'moneypit-product-reviews' ) );
+							// printf( '<p class="mp-product-review-link"><a href="#mp-review-%s">%s</a></p>', $count, __( 'Read Our Review', 'moneypit-product-reviews' ) );
+					echo '</div>';
 
 				echo '</div>';
 
@@ -142,7 +144,7 @@ class MP_Product_Reviews_Block {
 
 		echo '</div>';
 
-		printf( '<h2 class="has-xxl-margin-bottom">%s</h2>', __( 'Our Unbiased Reviews', 'moneypit-product-reviews' ) );
+		printf( '<h2 class="is-style-heading-line has-xxl-margin-bottom"><span class="heading-accent">%s</span></h2>', __( 'Our Unbiased Reviews', 'moneypit-product-reviews' ) );
 
 		$count = 1;
 
@@ -280,9 +282,12 @@ class MP_Product_Reviews_Block {
 		$array = explode( "\r\n", $content );
 		$array = array_values( array_filter( $array ) );
 		$array = $limit ? array_slice( $array , 0, absint( $limit ) ) : $array;
+		$class = explode( ' ', $class );
+		$class = array_unique( array_filter( $class ) );
+		$class = array_map( 'sanitize_html_class', $class );
 
 		if ( $array ) {
-			$html .= sprintf( '<ul class="mp-list %s">', sanitize_html_class( $class ) );
+			$html .= sprintf( '<ul class="mp-list %s">', implode( ' ', $class ) );
 				foreach ( $array as $item ) {
 					$html .= sprintf( '<li class="mp-list-item">%s</li>', $item );
 				}
