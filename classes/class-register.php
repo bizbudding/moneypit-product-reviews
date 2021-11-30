@@ -126,7 +126,7 @@ class MP_Product_Reviews_Register {
 						'name'      => 'pros',
 						'type'      => 'textarea',
 						'rows'      => 5,
-						'new_lines' => '',
+						'new_lines' => 'br',
 						'wrapper'   => [
 							'width' => '50',
 						],
@@ -137,7 +137,7 @@ class MP_Product_Reviews_Register {
 						'name'      => 'cons',
 						'type'      => 'textarea',
 						'rows'      => 5,
-						'new_lines' => '',
+						'new_lines' => 'br',
 						'wrapper'   => [
 							'width' => '50',
 						],

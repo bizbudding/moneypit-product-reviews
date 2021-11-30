@@ -22,7 +22,7 @@
 .mp-product-details {
 	display: grid;
 	grid-template-columns: var(--mp-product-details-columns, 1fr);
-	gap: var(--spacing-md);
+	gap: var(--spacing-md) var(--spacing-lg);
 	place-items: var(--mp-product-details-place-items, center start);
 }
 
@@ -31,7 +31,7 @@
 }
 
 .mp-product-pros {
-	font-size: var(--font-size-md);
+	font-size: var(--font-size-sm);
 }
 
 .mp-product-pros,
@@ -217,7 +217,7 @@
 @media only screen and (min-width: 800px) {
 
 	.mp-product {
-		--mp-product-columns: 1fr 1.5fr auto;
+		--mp-product-columns: 1fr 1.25fr 1.25fr;
 		--mp-product-details-columns: auto 1fr;
 	}
 

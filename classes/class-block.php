@@ -130,11 +130,10 @@ class MP_Product_Reviews_Block {
 
 						if ( $product['link'] ) {
 							printf( '<a class="mp-product-button button" href="%s" target="__blank" rel="noopener noreferrer">%s</a>', $product['link'], $product['button_text'] );
-							// printf( '<a class="mp-product-link" href="%s" target="__blank" rel="noopener noreferrer">%s</a>', $product['link'], $product['button_text'] );
 						}
 
 						printf( '<a href="#mp-review-%s" class="mp-product-review-link">%s</a>', $count, __( 'Read Our Review', 'moneypit-product-reviews' ) );
-							// printf( '<p class="mp-product-review-link"><a href="#mp-review-%s">%s</a></p>', $count, __( 'Read Our Review', 'moneypit-product-reviews' ) );
+
 					echo '</div>';
 
 				echo '</div>';
@@ -251,7 +250,6 @@ class MP_Product_Reviews_Block {
 		$data['link_text']   = $data['link_text'] ?: __( 'Amazon Customer Reviews', 'moneypit-product-reviews' );
 		$data['button_text'] = $data['button_text'] ?: __( 'Shop Now', 'moneypit-product-reviews' );
 
-
 		// Sanitize.
 		$data['title']       = esc_html( trim( $data['title'] ) );
 		$data['image']       = absint( $data['image'] );
@@ -259,8 +257,8 @@ class MP_Product_Reviews_Block {
 		$data['link_text']   = esc_html( trim( $data['link_text'] ) );
 		$data['button_text'] = esc_html( trim( $data['button_text'] ) );
 		$data['price']       = esc_html( trim( $data['price'] ) );
-		$data['pros']        = esc_html( trim( $data['pros'] ) );
-		$data['cons']        = esc_html( trim( $data['cons'] ) );
+		$data['pros']        = wp_kses_post( trim( $data['pros'] ) );
+		$data['cons']        = wp_kses_post( trim( $data['cons'] ) );
 		$data['review']      = wp_kses_post( trim( $data['review'] ) );
 
 		return $data;
@@ -279,7 +277,9 @@ class MP_Product_Reviews_Block {
 	 */
 	function get_list( $content, $class, $limit = 0 ) {
 		$html  = '';
-		$array = explode( "\r\n", $content );
+		// $array = explode( "\r\n", $content );
+		$array = explode( '<br />', $content );
+		$array = array_map( 'trim', $array );
 		$array = array_values( array_filter( $array ) );
 		$array = $limit ? array_slice( $array , 0, absint( $limit ) ) : $array;
 		$class = explode( ' ', $class );
