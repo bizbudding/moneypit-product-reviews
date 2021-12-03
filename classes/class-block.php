@@ -99,7 +99,7 @@ class MP_Product_Reviews_Block {
 
 					echo '<div class="mp-product-image">';
 						if ( $product['image'] ) {
-							echo wp_get_attachment_image( $product['image'], 'thumbnail' );
+							echo wp_get_attachment_image( $product['image'], 'landscape-sm' );
 						}
 					echo '</div>';
 
@@ -164,7 +164,7 @@ class MP_Product_Reviews_Block {
 
 							if ( $product['image'] ) {
 								echo '<div class="mp-review-image">';
-									echo wp_get_attachment_image( $product['image'], 'medium' );
+									echo wp_get_attachment_image( $product['image'], 'landscape-sm' );
 								echo '</div>';
 							}
 
