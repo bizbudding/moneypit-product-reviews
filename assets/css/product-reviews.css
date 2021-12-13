@@ -27,6 +27,7 @@
 }
 
 .mp-product-title {
+	--h2-font-size: var(--font-size-md);
 	--heading-margin-bottom: 0;
 }
 
@@ -165,6 +166,19 @@
 	padding-left: 0;
 }
 
+@media only screen and (max-width: 599px) {
+
+	.mp-product-button {
+		--button-padding: 0;
+		--button-color: var(--color-link);
+		--button-background: transparent;
+	}
+
+	.mp-review-button {
+		--button-padding: var(--spacing-xs) var(--spacing-md);
+	}
+}
+
 @media only screen and (min-width: 600px) {
 
 	.mp-product {
@@ -183,6 +197,7 @@
 	}
 
 	.mp-product-title {
+		--h2-font-size: var(--font-size-lg);
 		--heading-margin-bottom: var(--spacing-md);
 	}
 
