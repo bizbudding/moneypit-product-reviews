@@ -61,9 +61,10 @@ class MP_Product_Reviews_Block {
 					wp_enqueue_style( 'moneypit-product-reviews', MP_PRODUCT_REVIEWS_PLUGIN_URL . "assets/css/product-reviews{$suffix}.css", [], $version );
 				},
 				'supports'        => [
-					'align' => [],
-					'mode'  => true,
-					'jsx'   => false,
+					'align'  => [],
+					'anchor' => true,
+					'mode'   => true,
+					'jsx'    => false,
 				],
 			]
 		);
@@ -89,8 +90,11 @@ class MP_Product_Reviews_Block {
 		}
 
 		$count = 1;
+		$class = 'mp-product-reviews';
+		$class = isset( $block['className'] ) && $block['className'] && function_exists( 'mai_add_classes' ) ? mai_add_classes( esc_attr( $block['className'] ), $class ) : $class;
+		$id    = isset( $block['anchor'] ) && $block['anchor'] ? sprintf( 'id="%s" ', sanitize_html_class( $block['anchor'] ) ) : '';
 
-		printf( '<div class="mp-product-reviews%s">', '' );
+		printf( '<div %sclass="%s">', $id, $class );
 
 			foreach ( $products as $product ) {
 				$product = $this->get_product_data( $product );
@@ -102,7 +106,6 @@ class MP_Product_Reviews_Block {
 							echo wp_get_attachment_image( $product['image'], 'landscape-sm' );
 						}
 					echo '</div>';
-
 
 					echo '<div class="mp-product-content">';
 
