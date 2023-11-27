@@ -4,7 +4,7 @@
  * Plugin Name:     Money Pit Product Reviews
  * Plugin URI:      https://moneypit.com
  * Description:     Create rich product review lists.
- * Version:         0.10.0
+ * Version:         0.10.1
  *
  * Author:          BizBudding, Mike Hemberger
  * Author URI:      https://bizbudding.com
@@ -12,6 +12,9 @@
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+// Must be at the top of the file.
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 /**
  * Main MP_Product_Reviews_Plugin Class.
@@ -90,7 +93,7 @@ final class MP_Product_Reviews_Plugin {
 
 		// Plugin version.
 		if ( ! defined( 'MP_PRODUCT_REVIEWS_VERSION' ) ) {
-			define( 'MP_PRODUCT_REVIEWS_VERSION', '0.10.0' );
+			define( 'MP_PRODUCT_REVIEWS_VERSION', '0.10.1' );
 		}
 
 		// Plugin Folder Path.
@@ -150,7 +153,7 @@ final class MP_Product_Reviews_Plugin {
 	 * @return  void
 	 */
 	public function hooks() {
-		add_action( 'admin_init', [ $this, 'updater' ] );
+		add_action( 'plugins_loaded', [ $this, 'updater' ] );
 	}
 
 	/**
@@ -165,18 +168,13 @@ final class MP_Product_Reviews_Plugin {
 	 * @return void
 	 */
 	public function updater() {
-		// Bail if current user cannot manage plugins.
-		if ( ! current_user_can( 'install_plugins' ) ) {
-			return;
-		}
-
 		// Bail if plugin updater is not loaded.
-		if ( ! class_exists( 'Puc_v4_Factory' ) ) {
+		if ( ! class_exists( 'YahnisElsts\PluginUpdateChecker\v5\PucFactory' ) ) {
 			return;
 		}
 
 		// Setup the updater.
-		$updater = Puc_v4_Factory::buildUpdateChecker( 'https://github.com/bizbudding/moneypit-product-reviews/', __FILE__, 'moneypit-product-reviews' );
+		$updater = PucFactory::buildUpdateChecker( 'https://github.com/bizbudding/moneypit-product-reviews/', __FILE__, 'moneypit-product-reviews' );
 
 		// Maybe set github api token.
 		if ( defined( 'MAI_GITHUB_API_TOKEN' ) ) {
